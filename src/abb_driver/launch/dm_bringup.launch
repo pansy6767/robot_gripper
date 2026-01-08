@@ -1,0 +1,11 @@
+<launch>
+    <param name="robot_description" textfile="$(find arm_dm_description)/urdf/arm_dm_description.urdf" />
+    
+    <!--硬件嵌入-->
+    <include file="$(find abb_driver)/launch/abb_hardware.launch"/>
+    
+    <!--moveit配置-->
+    <!-- <include file="$(find abb_driver)/launch/load_config.launch"/>-->
+    <!--<include file="$(find arm_moveit_config)/launch/load_config2.launch"/>-->
+  <include file="$(find arm_moveit_config)/launch/demo_real.launch"/>
+</launch>

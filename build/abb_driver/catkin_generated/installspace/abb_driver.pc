@@ -1,0 +1,8 @@
+prefix=/home/airlab1/Desktop/robot_gripper/install
+
+Name: abb_driver
+Description: Description of abb_driver
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -labb_driver
+Requires: actionlib roscpp dmbot_serial moveit_ros_planning_interface control_msgs trajectory_msgs

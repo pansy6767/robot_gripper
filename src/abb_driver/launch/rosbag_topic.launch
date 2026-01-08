@@ -1,0 +1,12 @@
+<launch>
+  <arg name="bagfile" default="/home/dm/ros_datas/my_bagfile.bag"/>
+  
+  <arg name="topics" default="/abb/cmd_joint_acc
+/abb/cmd_joint_pos
+/abb/cmd_joint_vel
+/abb/joint_states"/>
+ 
+
+
+  <node name="rosbag_record" pkg="rosbag" type="record" args="-o $(arg bagfile) $(arg topics)"/>
+</launch>

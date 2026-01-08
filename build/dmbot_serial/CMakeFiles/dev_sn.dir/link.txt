@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/dev_sn.dir/src/dev_sn.cpp.o  -o /home/airlab1/Desktop/robot_gripper/devel/lib/dmbot_serial/dev_sn  -lusb-1.0 

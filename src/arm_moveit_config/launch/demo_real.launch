@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- MoveIt options -->
+  <arg name="pipeline" default="ompl" doc="Planning pipeline to use with MoveIt"/>
+
+
+  <!-- Launch Gazebo and spawn the robot -->
+  <include file="$(dirname)/real.launch" pass_all_args="true"/>
+
+  <!-- Launch MoveIt -->
+  <include file="$(dirname)/demo.launch" pass_all_args="true">
+    <!-- robot_description is loaded by gazebo.launch, to enable Gazebo features -->
+    <arg name="load_robot_description" value="false" />
+    <arg name="moveit_controller_manager" value="simple" />
+  </include>
+</launch>

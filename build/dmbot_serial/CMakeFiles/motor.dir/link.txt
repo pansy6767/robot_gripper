@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC   -shared -Wl,-soname,libmotor.so -o /home/airlab1/Desktop/robot_gripper/devel/lib/libmotor.so CMakeFiles/motor.dir/src/protocol/damiao.cpp.o  /home/airlab1/Desktop/robot_gripper/src/dmbot_serial/lib/libu2canfd.a -lusb-1.0 -lpthread 

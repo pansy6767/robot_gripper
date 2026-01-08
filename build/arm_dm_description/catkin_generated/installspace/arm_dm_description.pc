@@ -1,0 +1,8 @@
+prefix=/home/airlab1/Desktop/robot_gripper/install
+
+Name: arm_dm_description
+Description: Description of arm_dm_description
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

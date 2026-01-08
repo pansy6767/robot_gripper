@@ -1,0 +1,8 @@
+prefix=/home/airlab1/Desktop/robot_gripper/devel
+
+Name: dmbot_serial
+Description: Description of dmbot_serial
+Version: 0.0.0
+Cflags: -I/home/airlab1/Desktop/robot_gripper/src/dmbot_serial/include
+Libs: -L${prefix}/lib -lmotor
+Requires: roscpp

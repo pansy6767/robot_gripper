@@ -1,0 +1,2 @@
+abb_driver:arm_dm_description:arm_moveit_config:control_robot:dmbot_serial
+-DCATKIN_DEVEL_PREFIX=/home/airlab1/Desktop/robot_gripper/devel -DCMAKE_INSTALL_PREFIX=/home/airlab1/Desktop/robot_gripper/install -G Unix Makefiles
