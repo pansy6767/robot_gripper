@@ -1,0 +1,8 @@
+prefix=/home/airlab1/Desktop/robot_gripper/devel
+
+Name: vi_grab
+Description: Description of vi_grab
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

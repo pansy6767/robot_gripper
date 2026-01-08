@@ -1,3 +1,4 @@
+#!/usr/bin/env python3 
 import rospy
 from moveit_commander import MoveGroupCommander
 
@@ -32,3 +33,44 @@ if __name__ == '__main__':
     # 节点退出时的清理工作（MoveGroupCommander会自动处理）
     rospy.loginfo("节点已退出。")
 
+# #!/usr/bin/env python3 
+# import rospy, sys
+# import moveit_commander
+ 
+# class MoveItFkDemo:
+#     def __init__(self):
+ 
+       
+#         moveit_commander.roscpp_initialize(sys.argv)
+ 
+        
+#         rospy.init_node('moveit_fk_demo', anonymous=True)       
+ 
+        
+#         arm = moveit_commander.MoveGroupCommander('arm')
+        
+        
+#         arm.set_goal_joint_tolerance(0.01)
+ 
+        
+#         arm.set_max_acceleration_scaling_factor(0.5)
+#         arm.set_max_velocity_scaling_factor(0.5)
+        
+        
+#         arm.set_named_target('home')
+#         arm.go()  
+#         rospy.sleep(0.1)
+         
+#         joint_positions = [-1.38,-1.271,0.876,0.0,-0.93,0.35]
+#         arm.set_joint_value_target(joint_positions)  
+#         arm.go()   
+#         rospy.sleep(0.1)
+ 
+#         moveit_commander.roscpp_shutdown()
+#         moveit_commander.os._exit(0)
+ 
+# if __name__ == "__main__":
+#     try:
+#         MoveItFkDemo()
+#     except rospy.ROSInterruptException:
+#         pass

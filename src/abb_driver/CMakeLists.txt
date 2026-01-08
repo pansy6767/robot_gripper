@@ -12,7 +12,8 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib
   moveit_msgs
   sensor_msgs
-  
+  std_msgs
+
   dmbot_serial
   moveit_ros_planning_interface
   control_msgs
@@ -221,11 +222,9 @@ target_link_libraries(abb_main
   ${catkin_LIBRARIES}
 )
 
-add_executable(ZeroGraMode src/ZeroGraMode.cpp)
-target_link_libraries(ZeroGraMode ${catkin_LIBRARIES})
-add_dependencies(ZeroGraMode ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
-
-
+add_executable(teach src/teach.cpp)
+target_link_libraries(teach ${catkin_LIBRARIES})
+add_dependencies(teach ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 
 add_executable(euler_orientation
@@ -238,6 +237,10 @@ target_link_libraries(euler_orientation
 
 add_executable(periodic_motion_client src/periodic_motion_client.cpp)
 target_link_libraries(periodic_motion_client ${catkin_LIBRARIES})
+
+add_executable(zero_force_node src/zero_force_control.cpp)
+target_link_libraries(zero_force_node ${catkin_LIBRARIES})
+
 
 
 

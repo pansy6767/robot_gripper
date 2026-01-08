@@ -1,0 +1,8 @@
+prefix=/home/airlab1/Desktop/robot_gripper/install
+
+Name: vi_msgs
+Description: Description of vi_msgs
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: 

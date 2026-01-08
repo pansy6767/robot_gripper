@@ -60,3 +60,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/control_robot" TYPE PROGRAM FILES "/home/airlab1/Desktop/robot_gripper/build/control_robot/catkin_generated/installspace/getTCP.py")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/control_robot" TYPE PROGRAM FILES "/home/airlab1/Desktop/robot_gripper/build/control_robot/catkin_generated/installspace/robot_move.py")
+endif()
+

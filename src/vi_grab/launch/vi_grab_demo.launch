@@ -1,0 +1,40 @@
+<!-- <launch>
+
+   <node pkg="vi_grab" name="object_detect" type="vi_catch_yolov8.py" cwd="node" output="screen" />
+   <node pkg="vi_grab" name="msg_pub" type="pub.py" cwd="node" output="screen" />
+   <node pkg="vi_grab" name="object_catch" type="vision_grab.py" cwd="node" output="screen" 
+   args="/home/airlab1/miniconda3/envs/ros1/bin/python3 "
+   />
+
+</launch> -->
+
+<launch>
+<node 
+  name="object_detect" 
+  pkg="vi_grab" 
+  cwd="node"
+  type="vi_catch_yolov8.py"  
+  args="/home/airlab1/miniconda3/envs/ros1/bin/python3 /home/airlab1/Desktop/robot_gripper/src/vi_grab/scripts/vi_catch_yolov8.py"
+  output="screen"
+/>
+
+<!-- 同理修改object_catch节点 -->
+<node 
+  name="object_catch" 
+  pkg="vi_grab" 
+  cwd="node"
+  type="vision_grab.py"
+  args="/home/airlab1/miniconda3/envs/ros1/bin/python3 /home/airlab1/Desktop/robot_gripper/src/vi_grab/scripts/vision_grab.py"
+  output="screen"
+/>
+
+<!-- msg_pub节点也建议同步修改，避免环境不一致 -->
+<node 
+  name="msg_pub" 
+  pkg="vi_grab" 
+  cwd="node"
+  type="pub.py"
+  args="/home/airlab1/miniconda3/envs/ros1/bin/python3 /home/airlab1/Desktop/robot_gripper/src/vi_grab/scripts/pub.py"
+  output="screen"
+/>
+</launch>

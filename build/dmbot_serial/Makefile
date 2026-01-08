@@ -56,6 +56,18 @@ CMAKE_BINARY_DIR = /home/airlab1/Desktop/robot_gripper/build
 #=============================================================================
 # Targets provided globally by CMake.
 
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -67,6 +79,16 @@ install/local/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -101,16 +123,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -122,18 +134,6 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
-
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,51 +168,6 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-dmbot_serial/CMakeFiles/dev_sn.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/dev_sn.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/dev_sn.dir/rule
-
-# Convenience name for target.
-dev_sn: dmbot_serial/CMakeFiles/dev_sn.dir/rule
-
-.PHONY : dev_sn
-
-# fast build rule for target.
-dev_sn/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/dev_sn.dir/build.make dmbot_serial/CMakeFiles/dev_sn.dir/build
-.PHONY : dev_sn/fast
-
-# Convenience name for target.
-dmbot_serial/CMakeFiles/std_msgs_generate_messages_py.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_py: dmbot_serial/CMakeFiles/std_msgs_generate_messages_py.dir/rule
-
-.PHONY : std_msgs_generate_messages_py
-
-# fast build rule for target.
-std_msgs_generate_messages_py/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/std_msgs_generate_messages_py.dir/build.make dmbot_serial/CMakeFiles/std_msgs_generate_messages_py.dir/build
-.PHONY : std_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-dmbot_serial/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_nodejs: dmbot_serial/CMakeFiles/std_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-std_msgs_generate_messages_nodejs/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build.make dmbot_serial/CMakeFiles/std_msgs_generate_messages_nodejs.dir/build
-.PHONY : std_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
 dmbot_serial/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
 	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 .PHONY : dmbot_serial/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
@@ -243,19 +198,19 @@ roscpp_generate_messages_eus/fast:
 .PHONY : roscpp_generate_messages_eus/fast
 
 # Convenience name for target.
-dmbot_serial/CMakeFiles/test_motor.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/test_motor.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/test_motor.dir/rule
+dmbot_serial/CMakeFiles/dev_sn.dir/rule:
+	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/dev_sn.dir/rule
+.PHONY : dmbot_serial/CMakeFiles/dev_sn.dir/rule
 
 # Convenience name for target.
-test_motor: dmbot_serial/CMakeFiles/test_motor.dir/rule
+dev_sn: dmbot_serial/CMakeFiles/dev_sn.dir/rule
 
-.PHONY : test_motor
+.PHONY : dev_sn
 
 # fast build rule for target.
-test_motor/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/test_motor.dir/build.make dmbot_serial/CMakeFiles/test_motor.dir/build
-.PHONY : test_motor/fast
+dev_sn/fast:
+	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/dev_sn.dir/build.make dmbot_serial/CMakeFiles/dev_sn.dir/build
+.PHONY : dev_sn/fast
 
 # Convenience name for target.
 dmbot_serial/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
@@ -273,19 +228,19 @@ rosgraph_msgs_generate_messages_nodejs/fast:
 .PHONY : rosgraph_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
-dmbot_serial/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+dmbot_serial/CMakeFiles/test_motor.dir/rule:
+	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/test_motor.dir/rule
+.PHONY : dmbot_serial/CMakeFiles/test_motor.dir/rule
 
 # Convenience name for target.
-std_msgs_generate_messages_lisp: dmbot_serial/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule
+test_motor: dmbot_serial/CMakeFiles/test_motor.dir/rule
 
-.PHONY : std_msgs_generate_messages_lisp
+.PHONY : test_motor
 
 # fast build rule for target.
-std_msgs_generate_messages_lisp/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/std_msgs_generate_messages_lisp.dir/build.make dmbot_serial/CMakeFiles/std_msgs_generate_messages_lisp.dir/build
-.PHONY : std_msgs_generate_messages_lisp/fast
+test_motor/fast:
+	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/test_motor.dir/build.make dmbot_serial/CMakeFiles/test_motor.dir/build
+.PHONY : test_motor/fast
 
 # Convenience name for target.
 dmbot_serial/CMakeFiles/roscpp_generate_messages_py.dir/rule:
@@ -301,21 +256,6 @@ roscpp_generate_messages_py: dmbot_serial/CMakeFiles/roscpp_generate_messages_py
 roscpp_generate_messages_py/fast:
 	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/roscpp_generate_messages_py.dir/build.make dmbot_serial/CMakeFiles/roscpp_generate_messages_py.dir/build
 .PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-dmbot_serial/CMakeFiles/std_msgs_generate_messages_eus.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_eus: dmbot_serial/CMakeFiles/std_msgs_generate_messages_eus.dir/rule
-
-.PHONY : std_msgs_generate_messages_eus
-
-# fast build rule for target.
-std_msgs_generate_messages_eus/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/std_msgs_generate_messages_eus.dir/build.make dmbot_serial/CMakeFiles/std_msgs_generate_messages_eus.dir/build
-.PHONY : std_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 dmbot_serial/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
@@ -346,21 +286,6 @@ rosgraph_msgs_generate_messages_cpp: dmbot_serial/CMakeFiles/rosgraph_msgs_gener
 rosgraph_msgs_generate_messages_cpp/fast:
 	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make dmbot_serial/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
 .PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-dmbot_serial/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f CMakeFiles/Makefile2 dmbot_serial/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-.PHONY : dmbot_serial/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-std_msgs_generate_messages_cpp: dmbot_serial/CMakeFiles/std_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : std_msgs_generate_messages_cpp
-
-# fast build rule for target.
-std_msgs_generate_messages_cpp/fast:
-	cd /home/airlab1/Desktop/robot_gripper/build && $(MAKE) -f dmbot_serial/CMakeFiles/std_msgs_generate_messages_cpp.dir/build.make dmbot_serial/CMakeFiles/std_msgs_generate_messages_cpp.dir/build
-.PHONY : std_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 dmbot_serial/CMakeFiles/motor.dir/rule:
@@ -524,26 +449,21 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/strip"
 	@echo "... install/local"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... test"
-	@echo "... dev_sn"
-	@echo "... std_msgs_generate_messages_py"
-	@echo "... std_msgs_generate_messages_nodejs"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_eus"
-	@echo "... test_motor"
+	@echo "... dev_sn"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... list_install_components"
-	@echo "... std_msgs_generate_messages_lisp"
+	@echo "... test_motor"
 	@echo "... roscpp_generate_messages_py"
 	@echo "... install"
-	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... install/strip"
-	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... motor"
 	@echo "... rosgraph_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"

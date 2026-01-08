@@ -10,7 +10,7 @@
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
     <group name="arm">
-        <chain base_link="base_link" tip_link="link6"/>
+        <chain base_link="base_link" tip_link="tcp_link"/> <!--2025.12.14.-->
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
     <group_state name="home" group="arm">
@@ -29,8 +29,19 @@
         <joint name="joint5" value="0.2588"/>
         <joint name="joint6" value="0.8415"/>
     </group_state>
+    <group_state name="test2" group="arm">
+        <joint name="joint1" value="0.0"/>
+        <joint name="joint2" value="-1.059"/>
+        <joint name="joint3" value="1.023"/>
+        <joint name="joint4" value="0.0"/>
+        <joint name="joint5" value="-1.280"/>
+        <joint name="joint6" value="0.0"/>
+    </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="gripper" parent_link="base_link" group="arm"/>
+    <!-- <end_effector name="gripper" parent_link="base_link" group="arm"/> -->
+    <end_effector name="tcp" parent_link="tcp_link" group="arm"/>  <!--2025.12.14.-->
+    
+    <!-- <end_effector name="link6" parent_link="base_link" group="arm"/>            2025/12/13 lk -->
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="base_link" link2="link1" reason="Adjacent"/>
     <disable_collisions link1="base_link" link2="link2" reason="Never"/>

@@ -1,2 +1,2 @@
-abb_driver:arm_dm_description:arm_moveit_config:control_robot:dmbot_serial
+abb_driver:arm_dm_description:arm_moveit_config:aruco_ros/aruco:aruco_ros/aruco_msgs:aruco_ros/aruco_ros:control_robot:dmbot_serial:easy_handeye/easy_handeye:easy_handeye/easy_handeye_msgs:easy_handeye/rqt_easy_handeye:vi_grab:vi_msgs
 -DCATKIN_DEVEL_PREFIX=/home/airlab1/Desktop/robot_gripper/devel -DCMAKE_INSTALL_PREFIX=/home/airlab1/Desktop/robot_gripper/install -G Unix Makefiles

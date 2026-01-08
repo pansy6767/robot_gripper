@@ -11,7 +11,7 @@
         xyz="-1.4614E-05 2.7564E-09 0.019963"
         rpy="0 0 0" />
       <mass
-        value="0.70252" />
+        value="0.976" />
       <inertia
         ixx="0.00089488"
         ixy="1.1047E-08"
@@ -51,7 +51,7 @@
         xyz="0.0027728 2.1768E-14 0.017932"
         rpy="0 0 0" />
       <mass
-        value="0.12465" />
+        value="0.138" />
       <inertia
         ixx="4.9774E-05"
         ixy="3.7599E-19"
@@ -109,7 +109,7 @@
         xyz="-0.0035914 -0.14996 9.5822E-09"
         rpy="0 0 0" />
       <mass
-        value="0.83418" />
+        value="1.379" />
       <inertia
         ixx="0.0043271"
         ixy="-6.9375E-08"
@@ -167,7 +167,7 @@
         xyz="-0.00257 0.09923 0.051397"
         rpy="0 0 0" />
       <mass
-        value="0.49894" />
+        value="0.727" />
       <inertia
         ixx="0.0011822"
         ixy="-2.0778E-06"
@@ -225,7 +225,7 @@
         xyz="0.0034984 0.028153 -1.0623E-06"
         rpy="0 0 0" />
       <mass
-        value="0.17215" />
+        value="0.370" />
       <inertia
         ixx="6.9729E-05"
         ixy="3.8219E-09"
@@ -283,7 +283,7 @@
         xyz="-0.00068876 0.076386 -1.3572E-05"
         rpy="0 0 0" />
       <mass
-        value="0.38198" />
+        value="0.391" />
       <inertia
         ixx="0.00011865"
         ixy="-9.3104E-08"
@@ -341,7 +341,7 @@
         xyz="1.8842E-15 0.0065 -1.5543E-15"
         rpy="0 0 0" />
       <mass
-        value="0.0045985" />
+        value="0.179" />
       <inertia
         ixx="3.5845E-07"
         ixy="-4.139E-22"
@@ -392,4 +392,23 @@
       effort="26"
       velocity="30" />
   </joint>
+  <!-- 在末端法兰后添加TCP 2025.12.14-->
+  <link name="tcp_link">
+    <visual>
+      <geometry>
+        <sphere radius="0.01"/>  <!-- 可视化标记 -->
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+  </link>
+
+  <joint name="tool_flange_to_tcp" type="fixed">
+    <parent link="link6"/>  <!-- 你的末端link名称,可能是tool0或Link6 -->
+    <child link="tcp_link"/>
+    <!-- 根据你的实际工具长度设置偏移,例如夹爪中心点 -->
+    <origin xyz="0.0 0.09 0.0" rpy="0 0 0"/>  
+  </joint>
+
 </robot>
